@@ -5,7 +5,7 @@ ini_set("display_errors", 1);
 
 session_start();
 
-if(empty($_SESSION)) {
+if(empty($_SESSION) && $_SERVER['REQUEST_URI'] !== "/erp/public/code.php" && explode('?', $_SERVER['REQUEST_URI'])[0] !== "/erp/public/code.php") {
     header("Location: http://".$_SERVER['SERVER_NAME']."/erp/public/deconnexion.php?type=info&message=".urlencode("Session expirée"));
 }
 
